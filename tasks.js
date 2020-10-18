@@ -150,6 +150,12 @@ function help(){
     console.log("Type 'exit' or 'quit' to exit");
     console.log("Type 'hello' to say hello!");
     console.log("Type 'hello' + Somthings to say hello Somthings!");
+    console.log("Type 'list' to see all the elements of todo list");
+    console.log("Type 'add' + Somthings add this new task to the Todo list");
+    console.log("Type 'remove' to remove last element from the list , or \"remove + nb of task\" to remove this task");
+
+
+
 }
 
 // The following line starts the application
