@@ -135,10 +135,14 @@ list();
  * @returns {void}
  */
 function remove(nb){
- List.splice(nb-1,1);
- console.log("New List :");
- list();
- 
+  if (nb>0 && nb<=List.length)
+  {
+    List.splice(nb-1,1);
+    console.log("New List :");
+    list();
+  }
+  else
+    console.log("This nb doesn't exist!");
  }
 /**
  * Print all the possible commands
