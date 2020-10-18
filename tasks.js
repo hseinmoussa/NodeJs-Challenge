@@ -40,7 +40,10 @@ function onDataReceived(text) {
     quit();
   }
   else if(text === 'hello'){
-    hello(txt[1]);
+    if (txt.length!=1)
+      hello(txt[1]);
+    else 
+      hello('');
   }
   else if(text === 'help'){
     help();
@@ -70,7 +73,10 @@ function unknownCommand(c){
  */
 function hello(text){
 
-  console.log(`hello ${text} !`)
+  if (text=='')
+    console.log(`hello!`)
+  else
+    console.log(`hello ${text} !`)
 }
 
 
