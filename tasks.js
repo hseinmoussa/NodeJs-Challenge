@@ -71,6 +71,14 @@ function onDataReceived(text) {
     else if(txt.length==3)
       edit(parseInt(txt[1]),txt[2]);
   }
+
+  else if(text === 'check'||text=='uncheck'){
+    if (txt.length!=1)
+    check(parseInt(txt[1]),text);
+  else 
+    console.log("Error");
+  }
+
   else{
     unknownCommand(text);
   }
@@ -178,6 +186,30 @@ function edit(nb,txt){
   else
     console.log("This nb doesn't exist!");
  }
+
+
+  /**
+ * Check
+ *
+ * @returns {void}
+ */
+function check(nb,text='check'){
+  if (nb>0 && nb<=List.length)
+    if(text=='check')
+    {
+      List[nb-1].checked=true;
+      console.log("New List :");
+      list();
+    }
+    else if(text=='uncheck')
+    {
+      List[nb-1].checked=false;
+      console.log("New List :");
+      list();
+    }
+  else
+    console.log("This nb doesn't exist!");
+ }
 /**
  * Print all the possible commands
  *
@@ -191,7 +223,9 @@ function help(){
     console.log("Type 'list' to see all the elements of todo list");
     console.log("Type 'add' + Somthings add this new task to the Todo list");
     console.log("Type 'remove' to remove last element from the list , or \"remove + nb of task\" to remove this task");
-
+    console.log("Type 'edit' + number + the new name to edit the task , or just edit + the new name to edit the last task");
+    console.log("Type 'ckeck' + number to mark the task as done");
+    console.log("Type 'unckeck' + number to mark the task as not done yet");
 
 
 }
