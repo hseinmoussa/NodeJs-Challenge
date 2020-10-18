@@ -118,10 +118,20 @@ function quit(){
  *
  * @returns {void}
  */
-var List=['Html','Css','JS'];
+var List=
+[
+  {checked:false,task:'Html'},
+  {checked:false,task:'Css'},
+  {checked:false,task:'JS'}
+];
+
 function list(){
   for(let i=0;i<List.length;i++)
-  console.log(i+1+'-'+List[i]);
+  if(List[i].checked)
+    console.log(`${i+1} : [✓] ${List[i].task} `);
+  else
+    console.log(`${i+1} : [ ] ${List[i].task} `);
+  //console.log(i+1+'-'+List[i]);
   console.log('\n');
 }
 
@@ -132,7 +142,7 @@ function list(){
  */
 function add(text){
  // if (txt.length===0)
-List.push(text);
+List.push({checked:false,task:text});
 console.log("New List :");
 list();
 
@@ -161,7 +171,7 @@ function remove(nb){
 function edit(nb,txt){
   if (nb>0 && nb<=List.length)
   {
-    List[nb-1]=txt;
+    List[nb-1].task=txt;
     console.log("New List :");
     list();
   }
