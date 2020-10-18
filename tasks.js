@@ -63,6 +63,14 @@ function onDataReceived(text) {
   else 
     remove(List.length);
   }
+  else if(text === 'edit'){
+    if (txt.length==1)
+      console.log("error!");
+    if (txt.length==2)
+      edit(List.length,txt[1]);
+    else if(txt.length==3)
+      edit(parseInt(txt[1]),txt[2]);
+  }
   else{
     unknownCommand(text);
   }
@@ -138,6 +146,22 @@ function remove(nb){
   if (nb>0 && nb<=List.length)
   {
     List.splice(nb-1,1);
+    console.log("New List :");
+    list();
+  }
+  else
+    console.log("This nb doesn't exist!");
+ }
+
+ /**
+ * Edit
+ *
+ * @returns {void}
+ */
+function edit(nb,txt){
+  if (nb>0 && nb<=List.length)
+  {
+    List[nb-1]=txt;
     console.log("New List :");
     list();
   }
