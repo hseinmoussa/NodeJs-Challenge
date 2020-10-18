@@ -98,7 +98,8 @@ function quit(){
 
 function help(){
     console.log("Type 'exit' or 'quit' to exit");
-    console.log("Type 'hello' to say hello");
+    console.log("Type 'hello' to say hello!");
+    console.log("Type 'hello' + Somthings to say hello Somthings!");
 }
 
 // The following line starts the application
