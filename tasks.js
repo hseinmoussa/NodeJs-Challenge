@@ -51,6 +51,18 @@ function onDataReceived(text) {
   else if(text === 'list'){
     list();
   }
+  else if(text === 'add'){
+    if (txt.length!=1)
+    add(txt[1]);
+  else 
+    console.log("Error");
+  }
+  else if(text === 'remove'){
+    if (txt.length!=1)
+    remove(parseInt(txt[1]));
+  else 
+    remove(List.length);
+  }
   else{
     unknownCommand(text);
   }
@@ -98,15 +110,36 @@ function quit(){
  *
  * @returns {void}
  */
+var List=['Html','Css','JS'];
 function list(){
-  var List=['Html','Css','JS'];
   for(let i=0;i<List.length;i++)
   console.log(i+1+'-'+List[i]);
   console.log('\n');
-
-
 }
 
+/**
+ * Add to List
+ *
+ * @returns {void}
+ */
+function add(text){
+ // if (txt.length===0)
+List.push(text);
+console.log("New List :");
+list();
+
+}
+/**
+ * Remove from the List
+ *
+ * @returns {void}
+ */
+function remove(nb){
+ List.splice(nb-1,1);
+ console.log("New List :");
+ list();
+ 
+ }
 /**
  * Print all the possible commands
  *
