@@ -48,6 +48,9 @@ function onDataReceived(text) {
   else if(text === 'help'){
     help();
   }
+  else if(text === 'list'){
+    list();
+  }
   else{
     unknownCommand(text);
   }
@@ -88,6 +91,20 @@ function hello(text){
 function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
+}
+
+/**
+ * Todo List
+ *
+ * @returns {void}
+ */
+function list(){
+  var List=['Html','Css','JS'];
+  for(let i=0;i<List.length;i++)
+  console.log(i+1+'-'+List[i]);
+  console.log('\n');
+
+
 }
 
 /**
