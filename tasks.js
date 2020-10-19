@@ -19,12 +19,17 @@ if(argvs.length==2)
   database='database.json';
 else
   database=argvs[2];
-
+try {
 fs.readFile(database, (err, data) => {
   if (err) throw err;
   if (!data)
   List = JSON.parse(data);
 });
+
+}
+catch (error){
+  console.log(error);
+}
 
 
 
@@ -142,11 +147,17 @@ function hello(text){
  function quit() {
   console.log('Quitting now, goodbye!');
   //  fs.writeFileSync('database.json', JSON.stringify(List), function writeJSON(err) {
+
+  try{
   fs.writeFile(`${database}`, JSON.stringify(List), function writeJSON(err) {
     if (err) throw err;
     else
       process.exit();
   });
+}
+catch (error){
+  console.log(error);
+}
 
   
 }
