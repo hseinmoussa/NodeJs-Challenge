@@ -1,4 +1,4 @@
-
+const fs = require('fs');
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -9,9 +9,16 @@
  * @param  {string} name the name of the app
  * @returns {void}
  */
+var List;
+fs.readFile('./database.json', (err, data) => {
+  if (err) throw err;
+   List = JSON.parse(data);
+  //console.log(List);
+});
 function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
+
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
@@ -110,15 +117,21 @@ function hello(text){
     console.log(`hello ${text} !`)
 }
 
-
 /**
  * Exits the application
  *
  * @returns {void}
  */
-function quit(){
-  console.log('Quitting now, goodbye!')
-  process.exit();
+ function quit() {
+  console.log('Quitting now, goodbye!');
+  //  fs.writeFileSync('database.json', JSON.stringify(List), function writeJSON(err) {
+  fs.writeFile('database.json', JSON.stringify(List), function writeJSON(err) {
+    if (err) throw err;
+    else
+      process.exit();
+  });
+
+  
 }
 
 /**
@@ -126,13 +139,14 @@ function quit(){
  *
  * @returns {void}
  */
+/*
 var List=
 [
   {checked:false,task:'Html'},
   {checked:false,task:'Css'},
   {checked:false,task:'JS'}
 ];
-
+*/
 function list(){
   for(let i=0;i<List.length;i++)
   if(List[i].checked)
