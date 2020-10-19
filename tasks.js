@@ -9,12 +9,29 @@ const fs = require('fs');
  * @param  {string} name the name of the app
  * @returns {void}
  */
-var List;
-fs.readFile('./database.json', (err, data) => {
+
+var database;
+
+var List=[];
+console.log(process.argv);
+var argvs=(process.argv).slice(0);
+if(argvs.length==2)
+  database='database.json';
+else
+  database=argvs[2];
+
+fs.readFile(database, (err, data) => {
   if (err) throw err;
-   List = JSON.parse(data);
-  //console.log(List);
+  if (!data)
+  List = JSON.parse(data);
 });
+
+
+
+
+
+
+
 function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
@@ -125,7 +142,7 @@ function hello(text){
  function quit() {
   console.log('Quitting now, goodbye!');
   //  fs.writeFileSync('database.json', JSON.stringify(List), function writeJSON(err) {
-  fs.writeFile('database.json', JSON.stringify(List), function writeJSON(err) {
+  fs.writeFile(`${database}`, JSON.stringify(List), function writeJSON(err) {
     if (err) throw err;
     else
       process.exit();
