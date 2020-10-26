@@ -22,7 +22,6 @@ else
 try {
 fs.readFile(database, (err, data) => {
   if (err) throw err;
-  if (!data)
   List = JSON.parse(data);
 });
 
